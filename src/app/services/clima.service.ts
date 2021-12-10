@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,8 @@ export class ClimaService {
 
   constructor(private http: HttpClient) { }
 
-  getClima(cuidad: string){
-    const URL = this.url + this.key + '&q=' + ciudad;
-    this.http.get(URL);
+  getClima(cuidad: string): Observable<any> {
+    const URL = this.url + this.key + '&q=' + cuidad;
+    return this.http.get(URL);
   }
 }
